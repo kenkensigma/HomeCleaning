@@ -1,11 +1,13 @@
 /**
  * Zero-dependency local dev server for HOME CLEANING
+ * Run locally via: npm start or npm run dev
  */
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
+const ROOT_DIR = path.join(__dirname, '..');
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -19,7 +21,6 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  // Parse URL removing query parameters
   const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
   let pathname = parsedUrl.pathname;
   
@@ -27,7 +28,7 @@ const server = http.createServer((req, res) => {
     pathname = '/index.html';
   }
 
-  const filePath = path.join(__dirname, pathname);
+  const filePath = path.join(ROOT_DIR, pathname);
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 

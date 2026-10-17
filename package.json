@@ -4,8 +4,9 @@
   "description": "Website Resmi HOME CLEANING - Buleleng, Bali",
   "main": "index.html",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
+    "start": "node scripts/server.js",
+    "dev": "node scripts/server.js",
+    "build": "node scripts/validate.js",
     "lint": "node scripts/validate.js",
     "test": "node scripts/validate.js"
   },
